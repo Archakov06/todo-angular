@@ -2,9 +2,21 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  templateUrl: './app.html',
 })
 export class AppComponent {
-  title = 'todo-angular';
+  tasks = [
+    {
+      text: 'Изучить VueJS',
+      completed: true,
+    },
+    {
+      text: 'Разработать ToDo на VueJS',
+      completed: false,
+    },
+  ];
+
+  onToggleCompleted(index: number) {
+    this.tasks[index].completed = !this.tasks[index].completed;
+  }
 }
