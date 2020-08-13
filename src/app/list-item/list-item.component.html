@@ -1,7 +1,7 @@
-<div
-  class="todo__list-item {{ completed ? 'todo__list-item--completed' : '' }}"
+<div *ngFor="let task of tasks;let i = index"
+  class="todo__list-item {{ task.completed ? 'todo__list-item--completed' : '' }}"
 >
-  <div (click)="toggleCompleted()" class="todo__list-item-check">
+  <div (click)="toggleCompleted(i)" class="todo__list-item-check">
     <svg
       width="10"
       height="8"
@@ -17,8 +17,8 @@
       />
     </svg>
   </div>
-  <p>{{ text }}</p>
-  <div class="todo__list-item-remove">
+  <p>{{ task.text }}</p>
+  <div class="todo__list-item-remove" (click)="removeTask(i)">
     <svg
       width="20"
       height="21"

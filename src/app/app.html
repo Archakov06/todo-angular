@@ -1,10 +1,11 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
 <div class="todo">
   <div class="todo__header">
     <h4>Список задач</h4>
   </div>
   <div class="todo__add-field">
-    <input type="text" placeholder="Введите текст задачи..." />
-    <button class="todo__add-field-button">
+    <input type="text" placeholder="Введите текст задачи..." formControlName="input"  />
+    <button class="todo__add-field-button" type="submit">
       <svg
         width="18"
         height="18"
@@ -20,12 +21,7 @@
     </button>
   </div>
   <div class="todo__list">
-    <app-list-item
-      *ngFor="let task of tasks; let i = index"
-      [text]="task.text"
-      [completed]="task.completed"
-      [index]="i"
-      (onToggleCompleted)="onToggleCompleted($event)"
-    ></app-list-item>
+    <app-list-item  [tasks]="newTaskCreate" (removeTaskItemIndex)="removeTaskItem($event)"></app-list-item>
   </div>
 </div>
+</form>
